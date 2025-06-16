@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens; // Agregar esta línea
 
 class Usuario extends Model
 {
+    use HasApiTokens; // Y esta línea
 
     protected $primaryKey = 'id_usuario'; // si no usas "id"
 
@@ -18,6 +20,7 @@ class Usuario extends Model
         'fecha_registro'
     ];
 
+    // Relaciones con otras tablas (residencias, reservas, favoritos)
     public function residencias()
     {
         return $this->hasMany(Residencia::class, 'id_propietario');
@@ -33,3 +36,4 @@ class Usuario extends Model
         return $this->hasMany(Favorito::class, 'id_estudiante');
     }
 }
+

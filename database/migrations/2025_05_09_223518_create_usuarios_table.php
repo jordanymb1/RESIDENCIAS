@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('contraseña');
             $table->enum('tipo_usuario', ['estudiante', 'propietario']);
             $table->string('telefono', 20)->nullable();
-            $table->date('fecha_registro');
+            $table->timestamp('fecha_registro')->useCurrent();  // Cambié 'date' por 'timestamp' y usé `useCurrent()`
             $table->timestamps();
         });
     }
